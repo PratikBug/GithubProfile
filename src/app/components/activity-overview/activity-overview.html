@@ -1,0 +1,27 @@
+<section class="activity-overview">
+  <h3>Activity overview</h3>
+  <div class="overview-body">
+    <div class="overview-text">
+      <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" class="repo-icon">
+        <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Z"></path>
+      </svg>
+      <p>
+        Contributed to
+        @for (repo of overview.contributedRepos; track repo; let last = $last) {
+          <a href="javascript:void(0)">{{ repo }}</a>@if (!last) {, }
+        }
+        @if (overview.otherReposCount) {
+          and {{ overview.otherReposCount }} other repositories
+        }
+      </p>
+    </div>
+
+    <div class="radar-block">
+      <div #chartEl class="radar-chart"></div>
+      <div class="radar-stats">
+        <span class="stat commits">{{ overview.commitsPercent }}% Commits</span>
+        <span class="stat prs">{{ overview.pullRequestsPercent }}% Pull requests</span>
+      </div>
+    </div>
+  </div>
+</section>

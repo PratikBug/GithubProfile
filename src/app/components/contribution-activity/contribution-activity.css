@@ -1,0 +1,119 @@
+.contribution-activity {
+  margin-top: 32px;
+}
+
+.contribution-activity h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 16px;
+  color: var(--gh-text);
+}
+
+.month-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gh-text);
+  border-bottom: 1px solid var(--gh-border);
+  padding-bottom: 8px;
+  margin: 0 0 16px;
+}
+
+.timeline {
+  border-left: 2px solid var(--gh-border);
+  margin-left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 8px;
+}
+
+.timeline-entry {
+  display: flex;
+  gap: 12px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.timeline-icon {
+  position: absolute;
+  left: -13px;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--gh-canvas);
+  border: 1px solid var(--gh-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gh-muted);
+  flex-shrink: 0;
+}
+
+.timeline-icon.pr {
+  color: #2da44e;
+}
+
+.timeline-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.entry-summary {
+  font-size: 14px;
+  color: var(--gh-text);
+  margin: 2px 0 0;
+}
+
+.entry-breakdown {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  border: 1px solid var(--gh-border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.entry-breakdown li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--gh-border);
+}
+
+.entry-breakdown li:last-child {
+  border-bottom: none;
+}
+
+.entry-breakdown a {
+  color: var(--gh-link);
+  text-decoration: none;
+}
+
+.entry-breakdown a:hover {
+  text-decoration: underline;
+}
+
+.entry-breakdown .status {
+  color: var(--gh-muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.show-more-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--gh-border);
+  background: var(--gh-btn-bg);
+  color: var(--gh-text);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.show-more-btn:hover {
+  background: var(--gh-btn-hover);
+}

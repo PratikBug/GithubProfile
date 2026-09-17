@@ -1,0 +1,88 @@
+<aside class="sidebar">
+  @if (loading) {
+    <div class="skeleton skeleton-avatar"></div>
+    <div class="skeleton skeleton-line" style="width: 70%"></div>
+    <div class="skeleton skeleton-line" style="width: 40%"></div>
+    <div class="skeleton skeleton-line" style="width: 90%; height: 60px"></div>
+  } @else if (user) {
+    <img class="avatar" [src]="user.avatar_url" [alt]="user.login" />
+
+    <h2 class="display-name">{{ user.name || user.login }}</h2>
+    <p class="username">{{ user.login }}</p>
+
+    @if (user.bio) {
+      <p class="bio">{{ user.bio }}</p>
+    }
+
+    <button type="button" class="edit-profile-btn">Edit profile</button>
+
+    <p class="follow-stats">
+      <span class="stat-value">{{ user.followers }}</span> followers ·
+      <span class="stat-value">{{ user.following }}</span> following
+    </p>
+
+    <ul class="meta-list">
+      @if (user.company) {
+        <li>
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+            <path d="M1.75 16A1.75 1.75 0 0 1 0 14.25V1.75C0 .784.784 0 1.75 0h8.5C11.216 0 12 .784 12 1.75v12.5c0 .085-.006.168-.018.25h2.268a.25.25 0 0 0 .25-.25V8.285a.25.25 0 0 0-.111-.208l-1.055-.703a.749.749 0 1 1 .832-1.248l1.055.703c.487.325.779.871.779 1.456v5.965A1.75 1.75 0 0 1 14.25 16h-3.5a.766.766 0 0 1-.197-.026c-.099.017-.2.026-.303.026h-3a.75.75 0 0 1-.75-.75V14h-1v1.25a.75.75 0 0 1-.75.75Zm-.25-1.75c0 .138.112.25.25.25H4v-1.25A.75.75 0 0 1 4.75 12h2.5a.75.75 0 0 1 .75.75v1.25h2.25a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25ZM3.75 6h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5ZM3 3.75A.75.75 0 0 1 3.75 3h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 3 3.75Zm4 3A.75.75 0 0 1 7.75 6h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 7 6.75ZM7.75 3h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5Zm-4 6h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5Z"></path>
+          </svg>
+          <span>{{ user.company }}</span>
+        </li>
+      }
+      @if (user.location) {
+        <li>
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+            <path d="M12.596 11.596 8 16.192l-4.596-4.596a8 8 0 1 1 13.192 0ZM8 14.07l3.536-3.535a6 6 0 1 0-7.072 0L8 14.07ZM8 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"></path>
+          </svg>
+          <span>{{ user.location }}</span>
+        </li>
+      }
+      @if (user.email) {
+        <li>
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+            <path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.809L8.38 9.397a.75.75 0 0 1-.76 0L1.5 5.809v6.442Zm13-8.181v-.32a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25v.32L8 7.88Z"></path>
+          </svg>
+          <a [href]="'mailto:' + user.email">{{ user.email }}</a>
+        </li>
+      }
+      @if (user.blog) {
+        <li>
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+            <path d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95l-1.25 1.25Zm-4.69 9.64a2 2 0 0 1 0-2.83l2.5-2.5a2 2 0 0 1 2.83 0 .75.75 0 0 0 1.06-1.06 3.5 3.5 0 0 0-4.95 0l-2.5 2.5a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25a.75.75 0 0 0-1.06-1.06l-1.25 1.25a2 2 0 0 1-2.83 0Z"></path>
+          </svg>
+          <a [href]="user.blog" target="_blank" rel="noopener">{{ user.blog }}</a>
+        </li>
+      }
+      @if (twitterHandle) {
+        <li>
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+            <path d="M0 1.154C0 .517.517 0 1.154 0h13.692C15.483 0 16 .517 16 1.154v13.692c0 .637-.517 1.154-1.154 1.154H1.154C.517 16 0 15.483 0 14.846V1.154Z"></path>
+          </svg>
+          <span>{{ twitterHandle }}</span>
+        </li>
+      }
+    </ul>
+
+    <h3 class="section-title">Achievements</h3>
+    <div class="achievements">
+      @for (a of achievements; track a.label) {
+        <div class="achievement-badge" [title]="a.label">
+          <span class="achievement-emoji">{{ a.emoji }}</span>
+          @if (a.count) {
+            <span class="achievement-count">x{{ a.count }}</span>
+          }
+        </div>
+      }
+    </div>
+
+    @if (user.company) {
+      <h3 class="section-title">Organizations</h3>
+      <div class="organizations">
+        <div class="org-badge" [title]="user.company">{{ orgInitial }}</div>
+      </div>
+    }
+  } @else {
+    <p class="error-state">Couldn't load this GitHub profile. Try another username.</p>
+  }
+</aside>

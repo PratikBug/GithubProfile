@@ -1,0 +1,76 @@
+.activity-overview {
+  margin-top: 24px;
+}
+
+.activity-overview h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: var(--gh-text);
+}
+
+.overview-body {
+  display: flex;
+  gap: 16px;
+  border: 1px solid var(--gh-border);
+  border-radius: 6px;
+  padding: 16px;
+  flex-wrap: wrap;
+}
+
+.overview-text {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--gh-text);
+}
+
+.overview-text .repo-icon {
+  color: var(--gh-muted);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.overview-text p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.overview-text a {
+  color: var(--gh-link);
+  text-decoration: none;
+}
+
+.overview-text a:hover {
+  text-decoration: underline;
+}
+
+.radar-block {
+  width: 260px;
+  flex-shrink: 0;
+}
+
+.radar-chart {
+  width: 100%;
+  height: 160px;
+}
+
+.radar-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--gh-text);
+  margin-top: 4px;
+}
+
+.radar-stats .commits {
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .radar-block {
+    width: 100%;
+  }
+}

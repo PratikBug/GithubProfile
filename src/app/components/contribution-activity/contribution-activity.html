@@ -1,0 +1,52 @@
+<section class="contribution-activity">
+  <h3>Contribution activity</h3>
+
+  @for (group of visibleGroups; track group.month) {
+    <div class="month-group">
+      <h4 class="month-title">{{ group.month }}</h4>
+      <div class="timeline">
+        @for (entry of group.entries; track entry.summary) {
+          <div class="timeline-entry">
+            <div class="timeline-icon" [class]="entry.icon">
+              @switch (entry.icon) {
+                @case ('commit') {
+                  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                    <path d="M11.93 8.5a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 0 1 0-1.5h3.32a4.002 4.002 0 0 1 7.86 0h3.32a.75.75 0 0 1 0 1.5Zm-1.43-.75a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path>
+                  </svg>
+                }
+                @case ('pr') {
+                  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                    <path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354Z"></path>
+                  </svg>
+                }
+                @case ('issue') {
+                  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+                    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path>
+                  </svg>
+                }
+              }
+            </div>
+            <div class="timeline-content">
+              <p class="entry-summary">{{ entry.summary }}</p>
+              @if (entry.breakdown) {
+                <ul class="entry-breakdown">
+                  @for (row of entry.breakdown; track row.repo) {
+                    <li>
+                      <a href="javascript:void(0)">{{ row.repo }}</a>
+                      <span class="status">{{ row.status }}</span>
+                    </li>
+                  }
+                </ul>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  @if (hasMore) {
+    <button type="button" class="show-more-btn" (click)="showMore()">Show more activity</button>
+  }
+</section>
