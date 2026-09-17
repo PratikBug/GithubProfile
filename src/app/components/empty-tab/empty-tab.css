@@ -1,0 +1,24 @@
+.empty-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px;
+  color: var(--gh-muted);
+}
+
+.empty-tab svg {
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.empty-tab p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.empty-tab .hint {
+  max-width: 360px;
+  font-size: 12px;
+}

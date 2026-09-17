@@ -1,0 +1,38 @@
+<app-header [username]="username()" [avatarUrl]="user()?.avatar_url ?? null" (searchUsername)="onSearchUsername($event)"></app-header>
+
+<app-tab-nav [activeTab]="activeTab()" [repoCount]="user()?.public_repos ?? null" (tabChange)="onTabChange($event)"></app-tab-nav>
+
+<main class="page">
+  <div class="layout">
+    <app-sidebar [user]="user()" [loading]="userLoading()"></app-sidebar>
+
+    <div class="main-content">
+      @switch (activeTab()) {
+        @case ('overview') {
+          <app-popular-repos></app-popular-repos>
+          <app-contribution-graph
+            [data]="contributions()"
+            [year]="year()"
+            [years]="years"
+            [loading]="contributionsLoading()"
+            (yearChange)="onYearChange($event)"
+          ></app-contribution-graph>
+          <app-activity-overview></app-activity-overview>
+          <app-contribution-activity></app-contribution-activity>
+        }
+        @case ('repositories') {
+          <app-empty-tab label="Repositories"></app-empty-tab>
+        }
+        @case ('projects') {
+          <app-empty-tab label="Projects"></app-empty-tab>
+        }
+        @case ('packages') {
+          <app-empty-tab label="Packages"></app-empty-tab>
+        }
+        @case ('stars') {
+          <app-empty-tab label="Stars"></app-empty-tab>
+        }
+      }
+    </div>
+  </div>
+</main>
